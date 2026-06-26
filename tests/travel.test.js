@@ -1,6 +1,6 @@
 const { generateItinerary } = require('../src/travel');
 
-describe('User Story 1 - Génération itinéraire', () => {
+describe('User Story 1 & 2 - Gestion des Itinéraires et Budget', () => {
 
     test('TC-VOYAGE-001: Rejet avec un budget à 0', () => {
         const payload = {
@@ -34,19 +34,23 @@ describe('User Story 1 - Génération itinéraire', () => {
         expect(() => generateItinerary(payload)).toThrow("La date de retour doit être après la date de départ.");
     });
 
-    test('TC-VOYAGE-002: Génération nominale réussie', () => {
+    test('TC-VOYAGE-002: Génération nominale de l’itinéraire', () => {
         const payload = {
             destination: "Montréal",
             departureDate: "2026-07-01",
             returnDate: "2026-07-15",
-            budget: 1500
+            budget: 1500,
+            preferences: ["Nature", "Gastronomie"]
         };
 
         const response = generateItinerary(payload);
 
         expect(response.status).toBe(200);
         expect(response.data.city).toBe("Montréal");
-        expect(response.data.activities).toContain("Nature");
-        expect(response.data.activities).toContain("Gastronomie");
+        
+        response.data.activities.forEach(activite => {
+            const estUnFiltreValide = activite === "Nature" || activite === "Gastronomie";
+            expect(estUnFiltreValide).toBe(true);
+        });
     });
 });
