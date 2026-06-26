@@ -1,0 +1,14 @@
+{
+  "name": "demo-jest",
+  "version": "1.0.0",
+  "description": "Démo test jest pokemon",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^30.0.0"
+  }
+}
