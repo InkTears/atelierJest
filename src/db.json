@@ -1,0 +1,19 @@
+{
+  "destinations": [
+    {
+      "city": "Tokyo",
+      "price": 1200,
+      "activities": ["Temple", "Sushi"]
+    },
+    {
+      "city": "Montréal",
+      "price": 1500,
+      "activities": ["Nature", "Gastronomie"]
+    },
+    {
+      "city": "Rome",
+      "price": 800,
+      "activities": ["Histoire", "Pizza"]
+    }
+  ]
+}
