@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function generateItinerary(data) {
-    const { destination, departureDate, returnDate, budget } = data;
+    const { destination, departureDate, returnDate, budget, excludeId } = data;
 
     if (!destination) {
         throw new Error("La destination est obligatoire.");
@@ -24,7 +24,7 @@ function generateItinerary(data) {
     const db = JSON.parse(rawData);
 
     const itinerary = db.destinations.find(
-        (dest) => dest.city === destination && dest.price <= budget
+        (dest) => dest.city === destination && dest.price <= budget && dest.id !== excludeId
     );
 
     if (!itinerary) {

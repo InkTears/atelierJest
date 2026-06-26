@@ -1,19 +1,28 @@
 {
   "destinations": [
     {
+      "id": 1,
       "city": "Tokyo",
       "price": 1200,
       "activities": ["Temple", "Sushi"]
     },
     {
+      "id": 2,
       "city": "Montréal",
       "price": 1500,
       "activities": ["Nature", "Gastronomie"]
     },
     {
+      "id": 3,
       "city": "Rome",
       "price": 800,
       "activities": ["Histoire", "Pizza"]
+    },
+    {
+      "id": 4,
+      "city": "Rome",
+      "price": 800,
+      "activities": ["Monuments", "Gelato"]
     }
   ]
 }
