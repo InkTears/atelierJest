@@ -3,10 +3,10 @@ const { generateItinerary } = require('../src/travel');
 describe('User Story 3 - Régénération d’itinéraire avec persistance', () => {
 
     const initialPayload = {
-        destination: "Rome",
+        city: "Rome",
         departureDate: "2026-07-01",
         returnDate: "2026-07-10",
-        budget: 800
+        price: 800
     };
 
     test('TC-ITIN-001: La fonction de régénération est disponible et réutilise les mêmes filtres', () => {
@@ -21,21 +21,13 @@ describe('User Story 3 - Régénération d’itinéraire avec persistance', () =
 
         expect(firstResponse.status).toBe(200);
         expect(secondResponse.status).toBe(200);
-        expect(regenerationPayload.destination).toBe(initialPayload.destination);
+
+        expect(regenerationPayload.city).toBe(initialPayload.city);
         expect(regenerationPayload.departureDate).toBe(initialPayload.departureDate);
         expect(regenerationPayload.returnDate).toBe(initialPayload.returnDate);
-        expect(regenerationPayload.budget).toBe(initialPayload.budget);
-        expect(secondResponse.data.city).toBe("Rome");
-        expect(secondResponse.data.price).toBe(800);
-    });
-
-    test('TC-ITIN-002: La nouvelle proposition est différente de la précédente', () => {
-        const firstResponse = generateItinerary(initialPayload);
-
-        const secondResponse = generateItinerary({
-            ...initialPayload,
-            excludeId: firstResponse.data.id
-        });
+        expect(regenerationPayload.price).toBe(initialPayload.price);
+        expect(secondResponse.data.city).toBe(initialPayload.city);
+        expect(secondResponse.data.price).toBe(initialPayload.price);
 
         expect(secondResponse.data.id).not.toBe(firstResponse.data.id);
         expect(secondResponse.data.activities).not.toEqual(firstResponse.data.activities);
